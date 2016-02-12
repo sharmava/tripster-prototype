@@ -1,0 +1,13 @@
+Dear Friend,
+
+You are invited to join our Tripster application.
+
+To register your account, click on the following link:
+
+http://tintin.cs.indiana.edu:8096
+
+If the link is not clickable, copy it to browser address bar and enter.
+
+Thanks and Regards,
+
+Tripster Team and Family

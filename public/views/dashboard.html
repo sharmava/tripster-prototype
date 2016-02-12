@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../css/dashboard.css" />
+
+
+    <script type="text/javascript" src="../js/angular.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../controllers/dashboard.js"></script>
+    <script type="text/javascript">
+//        $(document).ready(function() { // this runs as soon as the page is ready (DOM is loaded)
+//            $("#planLayout") // selecting "div" (you can also select the element by its id or class like in css )
+//                    .load("planning.html") // load in the file specified
+//        });
+    </script>
+    <title>Dashboard</title>
+
+</head>
+<body ng-app="dashboard" >
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid" >
+<!--        <div class="container-fluid" style="background-color:#337ab7">-->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#" style="color:#ffffff">Tripster</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color:#ffffff"><span class="glyphicon glyphicon-globe"></span> Updates <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#"><span class="glyphicon glyphicon-envelope"></span> Invitations (<span id="num_invites">2</span>)</a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-picture"></span> Pictures Shared (<span id="num_photo_shared">10</span>)</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color:#ffffff"><span class="glyphicon glyphicon-wrench"></span> Settings <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#"><span class="glyphicon glyphicon-trash"></span>Delete Account</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="#" style="color:#ffffff"><span class="glyphicon glyphicon-log-out" ></span> Log Out</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="row">
+    <div class="col-md-2">
+
+
+            <ul class="nav nav-pills nav-stacked">
+                <li class="active"><a href="#"><span class="glyphicon glyphicon-home"></span> User's Name </a></li>
+                <li><img src="assets/img/friends/fr-02.jpg" class="img-circle" width="60"></li>
+                <li><a href="#">My Profile</a></li>
+                <li><a href="#">My Invites</a></li>
+                <li><a href="#">My Calendar</a></li>
+                <li><a href="#">My ToDos</a></li>
+            </ul>
+
+    </div>
+
+
+    <div class="col-md-6">
+            <!--<div class="jumbotron">
+                <h1>Welcome to Tripster!</h1>
+            </div>-->
+            <!--<div class="page-header">
+                <h1>Welcome to Tripster !</h1>
+            </div>
+
+        <div style="background:transparent !important" class="page-header">
+            <h2>Updates</h2>
+            <div class="row">
+                <div class="col-md-3">
+                    <p><a href="#">Invitations </a> </p></div>
+                <div class="col-md-2">
+                    <p>4  </p></div></div>
+                <div class="row">
+                <div class="col-md-3">
+                    <p><a href="#">Pictures Shared with you </a> </p></div>
+                <div class="col-md-2">
+                    <p>10  </p></div>
+
+                 </div>
+            </div>
+            -->
+
+            <div>
+                <section class="tab" ng-controller="TabController as tabCtrl">
+                    <ul class="nav nav-pills">
+                        <li ng-class="{ active: tabCtrl.isSet(1) }">
+                            <a href ng-click="tabCtrl.setTab(1)">My Plannings</a></li>
+                        <li ng-class="{ active: tabCtrl.isSet(2) }">
+                            <a href ng-click="tabCtrl.setTab(2)">My Invites</a></li>
+                        <li ng-class="{ active: tabCtrl.isSet(3) }">
+                            <a href ng-click="tabCtrl.setTab(3)">My Expenses</a></li>
+                        <li ng-class="{ active: tabCtrl.isSet(4) }">
+                            <a href ng-click="tabCtrl.setTab(4)">My Friends</a></li>
+                        <li ng-class="{ active: tabCtrl.isSet(5) }">
+                            <a href ng-click="tabCtrl.setTab(5)">My Gallery</a></li>
+                        <li ng-class="{ active: tabCtrl.isSet(6) }">
+                            <a href ng-click="tabCtrl.setTab(6)">My Todos</a></li>
+                    </ul>
+
+
+                    <div id="planLayout" ng-show="tabCtrl.isSet(1)">
+                        <div ng-controller="planAppController">
+                        <div id="planningLayout" >
+                            <section>
+                                <form class="form-4" name="loginForm"  method="post"
+                                      accept-charset="utf-8" ng-submit="savePlanDetails()">
+                                    <h1>Plan your trip</h1>
+
+                                    <p>
+                                        <label>Name</label>
+                                        <input id="ipbox1" type="text" name="name" placeholder="Tripster"
+                                               required class="ng-pristine ng-valid" ng-model="planDetails.Name">
+                                    </p>
+
+                                    <p>
+                                        <label>Destination</label>
+                                        <input id="ipbox2" type="text" name="destination" placeholder="Tripster"
+                                               required class="ng-pristine ng-valid" ng-model="planDetails.Destination">
+                                    </p>
+
+                                    <p>
+                                        <label>Description</label>
+                                        <input id="ipbox3" type="text" name="description" placeholder="Tripster"
+                                               required class="ng-pristine ng-valid" ng-model="planDetails.Description">
+                                    </p>
+
+                                    <p>
+                                        <label>Invites</label>
+                                        <input id="ipbox4" type="text" name="invites" placeholder="Tripster"
+                                               required class="ng-pristine ng-valid" ng-model="planDetails.Invites">
+                                    </p>
+
+                                    <p>
+                                        <label>Start Date</label>
+                                        <input id="ipbox5" type="date" name="startDate"
+                                               required class="ng-pristine ng-valid" ng-model="planDetails.StartDate">
+                                    </p>
+
+                                    <p>
+                                        <label>End Date</label>
+                                        <input id="ipbox6" type="date" name="endDate"
+                                               required class="ng-pristine ng-valid" ng-model="planDetails.EndDate">
+                                    </p>
+
+                                    <p>
+                                        <input type="submit" name="submit" value="Continue" ng-submit="tripEvents()">
+                                    </p>
+
+
+                                </form>
+                            </section>
+
+                        </div>
+                        </div>
+
+                    </div>
+
+                    <div ng-show="tabCtrl.isSet(2)">
+                        <ul>
+
+                            <li> This is the page where you manage your invites.</li>
+
+                            <li> The page is under maintenance. Please check back later.</li>
+                        </ul>
+                   </div>
+
+                    <div ng-show="tabCtrl.isSet(3)">
+
+                        <ul>
+
+                            <li> This is the page where you manage your expenses.</li>
+
+                            <li> The page is under maintenance. Please check back later.</li>
+                        </ul>
+                    </div>
+
+                    <div ng-show="tabCtrl.isSet(4)">
+
+                        <ul>
+
+                            <li> This is the page where you manage your friends.</li>
+
+                            <li> The page is under maintenance. Please check back later.</li>
+                        </ul>
+                    </div>
+
+                    <div ng-show="tabCtrl.isSet(5)">
+
+                        <ul>
+
+                            <li> This is the page where you manage your gallery.</li>
+
+                            <li> The page is under maintenance. Please check back later.</li>
+                        </ul>
+                    </div>
+
+                    <div ng-show="tabCtrl.isSet(6)">
+
+                        <ul>
+
+                            <li> This is the page where you manage your todos.</li>
+
+                            <li> The page is under maintenance. Please check back later.</li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+
+    </div>
+
+    <!--<div class="col-md-2">-->
+
+            <!--<ul class="nav nav-pills nav-stacked">-->
+                <!--<li class="active"><a href="#">Quick Links</a></li>-->
+               <!--&lt;!&ndash; <li class="dropdown">-->
+                    <!--<a class="dropdown-toggle" data-toggle="dropdown" href="#">Menu 1 <span class="caret"></span></a>-->
+                    <!--<ul class="dropdown-menu">-->
+                        <!--<li><a href="#">Submenu 1-1</a></li>-->
+                        <!--<li><a href="#">Submenu 1-2</a></li>-->
+                        <!--<li><a href="#">Submenu 1-3</a></li>-->
+                    <!--</ul>-->
+                <!--</li>&ndash;&gt;-->
+                <!--<li><a href="#">My Plannings</a></li>-->
+                <!--<li><a href="#">My Invites</a></li>-->
+                <!--<li><a href="#">My Expenses</a></li>-->
+                <!--<li><a href="#">My Friends</a></li>-->
+                <!--<li><a href="#">My Gallery</a></li>-->
+                <!--<li><a href="#">My Todos</a></li>-->
+            <!--</ul>-->
+        <!--</div>-->
+
+
+
+
+
+<div class ="col-md-4"ng-controller = "eventsController">
+    <!--<button type="button" ng-click="readJSON()" >ReadJSON!</button>-->
+    <h4 class="nav nav-pills nav-stacked" align="center"><span class="glyphicon glyphicon-flag"></span>Events</h4>
+    <table border="">
+        <thead>
+        <tr><th id="Name" >Name</a></th>
+            <th id="Category">Category</a></th>
+            <th id="Location">Location</a></th>
+            <th id="Add">Add</a></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="item1 in events">
+            <td>{{item1.name}}</td>
+            <td>{{item1.category}}</td>
+            <td>{{item1.address}}</td>
+            <td> <img src="assets/img/invitesIcon.jpg" class="img-circle" width="20" ng-click="addEvent($index)"></td>
+        </tr>
+        </tbody>
+    </table>
+    {{$index}}
+</div>
+</div>
+<div class="navbar-footer">
+    <span>
+        <a href="#" target="_blank">About Tripster</a> |
+        <a href="#" target="_blank">Contact Us</a> |
+        Copyright © 2015 </span>
+
+</div>
+
+</body>
+</html>

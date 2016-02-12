@@ -1,0 +1,35 @@
+body {
+    background: #7f9b4e url(/img/sample9.jpg) no-repeat center top;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+}
+
+header h1 {
+    color: white;
+}
+
+header h2 {
+    color: white;
+}
+
+.form-4 input[type="email"] {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(78, 48, 67, 0.8);
+    border-radius: 2px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 1px rgba(0, 0, 0, 0.1) inset;
+    color: white;
+    font-family: "Raleway","Lato",Arial,sans-serif;
+    font-size: 13px;
+    margin-bottom: 15px;
+    padding: 8px 4px 8px 10px;
+    transition: all 0.3s ease-out 0s;
+    width: 100%;
+}
+
+#loginFlashMsg {
+    color: orange;
+    font-size: 15px;
+    font-weight: bold;
+    padding-bottom: 10px;
+}

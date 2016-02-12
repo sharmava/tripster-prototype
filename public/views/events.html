@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Events</title>
+    <script type= "text/javascript" src="/js/angular.js"></script>
+    <script  type= "text/javascript" src="/controllers/events.js"></script>
+</head>
+<body>
+
+<div class="main"ng-app="eventsPage" ng-controller = "eventsController">
+   <!-- <ul class="artistlist">
+        <li class="artist cf" ng-repeat="item in events">
+            <div class="info">
+                <h2>{{item.shortname}}</h2>
+                <h3>{{item.reknown}}</h3>
+            </div>
+        </li>
+    </ul>-->
+    <button type="button" ng-click="readJSON()">ReadJSON!</button>
+    <table border="">
+        <thead>
+        <tr><th id="Name">Name</th>
+            <th id="Shortname">Shortname</th>
+            <th id="Reknown">Reknown</th>
+            <th id="Bio">Bio</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="item1 in events">
+            <td>{{item1.name}}</td>
+            <td>{{item1.shortname}}</td>
+            <td>{{item1.reknown}}</td>
+            <td>{{item1.bio}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

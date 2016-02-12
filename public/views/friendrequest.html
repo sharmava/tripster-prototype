@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Friend Request</title>
+    <script type= "text/javascript" src="/js/angular.js"></script>
+    <script  type= "text/javascript" src="/controllers/friendrequest.js"></script>
+</head>
+<body ng-app="friendrequestPage" ng-controller="friendRequestController">
+<p>Emailid-Reciever: <input type="text" ng-model="email.to"></p>
+<p>Enter your custom message here</p>
+<textarea rows="4" cols="50" name="EmailContent:" form="usrform" ng-model="email.content">
+    Enter text here...</textarea>
+<button type="button" ng-click="sendRequest()">Send!</button>
+{{to}}
+{{content}}
+</body>
+</html>

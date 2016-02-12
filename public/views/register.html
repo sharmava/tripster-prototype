@@ -1,0 +1,251 @@
+
+<!DOCTYPE html>
+
+<!-- ASSIGN OUR ANGULAR MODULE -->
+<html>
+<head>
+    <!-- SCROLLS -->
+
+    <link rel= "stylesheet" type="text/css" href="/css/register.css" />
+    <link rel= "stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link rel= "stylesheet" type="text/css" href="/css/bootstrap-switch.css">
+    <script type= "text/javascript" src= "/js/jquery.min.js"></script>
+    <script type= "text/javascript" src= "/js/bootstrap.min.js"></script>
+    <script type= "text/javascript" src= "/js/bootstrap-switch.min.js"></script>
+    <script type= "text/javascript" src="/js/angular.js"></script>
+    <script  type= "text/javascript" src="/controllers/register.js"></script>
+
+</head>
+<body ng-app="registerPage" ng-controller="newUserController">
+
+
+<!--added to test angular js -->
+<div class="container"   >
+    <div class="panel panel-primary dialog-panel">
+        <div class="panel-heading">
+            <h2>Tripster - Sign Up</h2>
+
+        </div>
+        <div class="panel-body" >
+            <form name="registerForm" class="form-horizontal" role= "form" ng-submit = "validateForm() && (registerForm.$valid) && (UserName1 === userDetails.UserName) && (Password1 === userDetails.Password) && createUser()">
+                <div class="form-group">
+                    <label class="control-label col-md-2 col-md-offset-2" for= "id_first_name"> Name </label>
+                    <div class="col-md-8">
+                        <div class="col-md-3 indent-small">
+                            <div class="form-group internal">
+                                <!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+                                <input class="form-control" id= "id_first_name" type= "text" placeholder= "First Name" ng-model="userDetails.FirstName" required>
+
+                            </div>
+                        </div>
+                        <div class="col-md-3 indent-small">
+                            <div class="form-group internal">
+                                <!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+                                <input class="form-control" id= "id_last_name" type= "text" placeholder= "Last Name"  ng-model="userDetails.LastName" >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2 col-md-offset-2" for= "username1"> Email </label>
+                    <div class="col-md-8">
+                        <div class="col-md-5">
+                            <div class="form-group internal ">
+                                <!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+<!--                                <input class="form-control " type ="email" placeholder = "E-mail" id= "username1" name="username1" ng-model="UserName1" ng-pattern="EMAIL_REGEXP" ng-change="checkUserName();" required>-->
+                                <input class="form-control " type ="email" placeholder = "E-mail" id="username1" name="username1" ng-model="UserName1" ng-change="checkUserName();" required>
+                                <span class="msg-error" ng-show="username_taken===true">
+                                    Already registered !<img src="../img/wrongCross.jpg" class="image"  alt="Already Registered !" height="20" width="20" >
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2 col-md-offset-2" for="username2"> Retype Email </label>
+                    <div class="col-md-8">
+                        <div class="col-md-5">
+                            <div class="form-group internal" >
+                                <!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+                                <input class="form-control " type ="email" placeholder = "E-mail" id= "username2" name="username2"  ng-model="userDetails.UserName"  required>
+                             <span class="username">
+                                 <img src="../img/greenTick.jpg" class="image" ng-show="(UserName1 === userDetails.UserName) && UserName1!='' && userDetails.UserName !='' && !registerPage.UserName.$error.required" alt="Match" height="20" width="20" >
+                                <img src="../img/wrongCross.jpg" class="image" ng-show="(registerPage.UserName.$error.required) || (UserName1 != userDetails.UserName) || (registerPage.username1.$error.email)|| (registerPage.username2.$error.email)" alt="Mismatch" height="20" width="20" >
+                             </span>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2 col-md-offset-2" for= "password"> Password </label>
+                    <div class="col-md-8">
+                        <div class="col-md-4">
+                            <div class="form-group internal ">
+                                <!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+
+                                <input class="form-control " type ="password" placeholder="*********" name="password" id="password" ng-model="Password1" ngMinlength="4" ngMaxlength="10" required>
+                                <span class="error" ng-show="registerPage.password.$error.required"> Required!</span>
+                                <!--<h4>Idhar hu{{Password1}}</h4>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2 col-md-offset-2" for= "password2"> Retype Password </label>
+                    <div class="col-md-8">
+                        <div class="col-md-4">
+                            <div class="form-group internal ">
+                                <!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+                                <input class="form-control " type ="password" placeholder = "*********" id= "password2" name="password2"  ng-model="userDetails.Password" ngMinlength="4" ngMaxlength="10" required>
+
+                            <span class="password" >
+                                <img src="../img/greenTick.jpg" class="image" ng-show="(userDetails.Password != '') && (Password1 === userDetails.Password)" alt="Match" height="20" width="20" >
+                                <img src="../img/wrongCross.jpg" class="image" ng-show="(userDetails.Password != '') && (Password1 != userDetails.Password)" alt="Mismatch" height="20" width="20" >
+                            </span>
+<!--
+                                <h4>Idhar hu{{userDetails.Password}}</h4>
+-->
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2 col-md-offset-2" for= "id_dob"> Birthday </label>
+                    <div class="col-md-8">
+                        <div class="col-md-3">
+                            <div class="form-group internal ">
+                                <!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+                                <input class="form-control datepicker" type ="date" id= "id_dob" placeholder = "mm/dd/yyyy	" ng-model="userDetails.DoB">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2 col-md-offset-2" for= "id_phone"> Contact Number</label>
+                    <div class="col-md-8">
+                        <div class="col-md-3">
+                            <div class="form-group internal ">
+                                <!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+                                <input class="form-control" id= "id_phone" type= "number" placeholder = "xxxxxxxx" ng-model="userDetails.Phone" >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2 col-md-offset-2" for= "id_address"> Address</label>
+                    <div class="col-md-4">
+                        <!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+                        <textarea class="form-control" id= "id_address" rows= "3" placeholder= "Address" ng-model="userDetails.Address"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2 col-md-offset-2" for= "id_city"> City</label>
+                    <div class="col-md-8">
+                        <div class="col-md-3">
+                            <div class="form-group internal ">
+                                <!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+                                <input class="form-control" id= "id_city" type= "text" placeholder = "City" ng-model="userDetails.City" >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2 col-md-offset-2" for= "id_state"> State</label>
+                    <div class="col-md-8">
+                        <div class="col-md-3">
+                            <div class="form-group internal ">
+                                <!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+                                <input class="form-control" id= "id_state" type= "text" placeholder = "State" ng-model="userDetails.State">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2 col-md-offset-2" for= "id_country"> Country</label>
+                    <div class="col-md-8">
+                        <div class="col-md-3">
+                            <div class="form-group internal ">
+                                <!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+                                <input class="form-control" id= "id_country" type= "text" placeholder = "Country" ng-model="userDetails.Country">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-3 col-md-2">
+
+                        <input class="btn-lg btn-primary" type="submit" id="submit" value="Register Me"  />
+                    </div>
+
+                    <div class="col-md-2">
+                        <input type="button" class="btn-lg btn-danger"  value="Reset Form" onClick="this.form.reset()" ng-click="resetForm()" style= "..." />
+                    </div>
+                    <div class="col-md-2">
+                        <input class="btn-lg btn-danger"  type="button" class="btn-lg btn-danger"  value="Cancel" onClick="this.form.reset()" ng-click="resetForm()" style= "..." />
+                    </div>
+
+                </div>
+                <!--           <div class="form-group">
+                   <label class="control-label col-md-2 col-md-offset-2" for= "id_state"> State</label>
+                   <div class="col-md-8">
+                     <div class="col-md-3">
+                       <div class="form-group internal">
+                         <select class="form-control" id= "id_state">
+                           <option>Travel trailer</option>
+                           <option>Fifth wheel</option>
+                           <option>RV/Motorhome</option>
+                           <option>Tent trailer</option>
+                           <option>Pickup camper</option>
+                           <option>Camper van</option></select>
+                       </div>
+                     </div>
+                     <div class="col-md-9">
+                       <div class="form-group internal">
+                         <label class="control-label col-md-3" for="id_slide"> Slide-outs</label>
+                         <div class="make-switch" id="id_slide_switch""data-on-label" = "YES" "data-off-label"= "NO">
+                           <input type="checkbox" value="chk_hydro" id= "id_slide"></div>
+                       </div>
+                     </div>
+                   </div>
+                   </div>
+                   <div class="form-group">
+                   <label class="control-label col-md-2 col-md-offset-2" for= "id_service"> Required Service</label>
+                   <div class="col-md-8">
+                     <select class="multiselect" multiple="multiple"id="id_service">
+                       <option value="hydro"> Hydro</option>
+                       <option value="water"> Water</option>
+                       <option value="sewer"> Sewer</option></select>
+                   </div>
+                   </div>
+                   <div class="form-group">
+                   <label class="control-label col-md-2 col-md-offset-2" for= "id_pets"> Pets</label>
+                   <div class="col-md-8">
+                     <div class="make-switch" id="id_pets_switch" "data-on-label" = "YES" "data-off-label"= "NO">
+                       <input type="checkbox" value="chk_hydro" id= "id_pets"></div>
+                   </div>
+                   </div>
+
+                   <div class="form-group">
+                   <label class="control-label col-md-2 col-md-offset-2" for= "id_accomodation"> Accomodation</label>
+                   <div class="col-md-2">
+                     <select class="form-control" id= "id_accomodation">
+                       <option>RV</option>
+                       <option>Tent</option>
+                       <option>Cabin/Lodging</option></select>
+                   </div>
+                   </div>
+                   -->
+            </form>
+        </div>
+    </div>
+    <div ng-hide="true">
+    <h4>User Info:</h4>
+    <pre>{{userDetails}}</pre>
+    <h4>User List:</h4>
+    <pre>{{userList}}</pre>
+    </div>
+</div>
+</body>
+</html>

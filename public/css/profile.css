@@ -1,0 +1,99 @@
+/*
+#profilePicture {
+    max-width:150px;
+    max-height:150px;
+}
+
+.imageHoverProfilePicture :hover  {
+    display: block;
+    -webkit-filter:blur(1.5px);
+    filter: blur(1.5px);
+}
+
+*/
+
+
+.notificationDiv {
+    overflow-y: auto;
+    height: 600px;
+}
+
+.profile_pic_1 {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.profile_pic_1 .profile_pic_2 {
+    display: inline-block;
+    height: auto;
+    margin: 0 1em 1em 0;
+    position: relative;
+    width: auto;
+}
+
+span.profilePicMsg {
+    /*background: rgba(0,0,0,0.5);*/
+    color: white;
+    cursor: pointer;
+    display: table;
+    height: auto;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: auto;
+}
+
+span.profilePicMsg span {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+
+span.profilePicMsg {
+    /*background: rgba(0,0,0,0.5);*/
+    color: white;
+    cursor: pointer;
+    display: table;
+    height: 150px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 150px;
+    opacity: 0;
+    font-size: medium;
+    font-weight: bolder;
+}
+
+.profile_pic_1 .profile_pic_2:hover span.profilePicMsg {
+    opacity: 1;
+}
+
+.profile_pic_1 .profile_pic_2 img{
+    width: 150px;
+    height: auto;
+    max-height: 150px;
+}
+
+.profile_pic_1 .profile_pic_2:hover img{
+    -webkit-filter:blur(1.5px);
+    filter: blur(1.5px);
+}
+span.profilePicMsg {
+    /*background: rgba(0,0,0,0.5);*/
+    color: white;
+    cursor: pointer;
+    display: table;
+    height: 150px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 150px;
+    opacity: 0;
+    -webkit-transition: opacity 500ms;
+    -moz-transition: opacity 500ms;
+    -o-transition: opacity 500ms;
+    transition: opacity 500ms;
+}

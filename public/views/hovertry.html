@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <title>My Website</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link rel= "stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link rel= "stylesheet" type="text/css" href="/css/bootstrap-switch.css">
+
+    <title></title>
+    <style>
+        .profile_pic_1 {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        .profile_pic_1 .profile_pic_2 {
+            display: inline-block;
+            height: 150px;
+            margin: 0 1em 1em 0;
+            position: relative;
+            width: 150px;
+        }
+
+        span.profilePicMsg {
+            background: rgba(0,0,0,0.5);
+            color: white;
+            cursor: pointer;
+            display: table;
+            height: 150px;
+            left: 0;
+            position: absolute;
+            top: 0;
+            width: 150px;
+        }
+
+        span.profilePicMsg span {
+            display: table-cell;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+
+        span.profilePicMsg {
+            background: rgba(0,0,0,0.5);
+            color: white;
+            cursor: pointer;
+            display: table;
+            height: 150px;
+            left: 0;
+            position: absolute;
+            top: 0;
+            width: 150px;
+            opacity: 0;
+        }
+
+        .profile_pic_1 .profile_pic_2:hover span.profilePicMsg {
+            opacity: 1;
+        }
+
+        span.profilePicMsg {
+            background: rgba(0,0,0,0.5);
+            color: white;
+            cursor: pointer;
+            display: table;
+            height: 150px;
+            left: 0;
+            position: absolute;
+            top: 0;
+            width: 150px;
+            opacity: 0;
+            -webkit-transition: opacity 500ms;
+            -moz-transition: opacity 500ms;
+            -o-transition: opacity 500ms;
+            transition: opacity 500ms;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="profile_pic_1">
+    <div class="profile_pic_2">
+        <a href="http://nataliemac.com">
+            <img src="assets/img/friends/vraj.jpg" width="150" height="150" />
+            <span class="profilePicMsg"><span>Change Picture</span></span>
+        </a>
+    </div>
+</div>
+
+
+
+</body>
+</html>

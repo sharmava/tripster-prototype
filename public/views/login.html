@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="/css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/login.css"/>
+    <title>Tripster</title>
+    <script type="text/javascript" src="/js/angular.js"></script>
+
+
+</head>
+<body ng-app="loginPage">
+<div class="container">
+    <header>
+        <h1 style="color: #ffffff"><strong>Welcome to Tripster</strong>!</h1>
+        <h4 style="color: #d43f3a">Ready for another <strong>Journey</strong> ?</h4>
+    </header>
+
+
+    <h3>
+        <span style="color: #d43f3a; font-weight: bold"><strong>Today's Quote</strong></span> <br>
+
+        <span style="color: forestgreen; font-weight: bold; font-style: italic;">“Certainly, travel is more than the seeing of sights; it is a change that goes on, deep and permanent, in the ideas of living.” </span>><br>–
+        Miriam Beard
+
+    </h3>
+
+    <section class="main" ng-controller="loginCheck">
+        <form class="form-4" style="float:right; background: #0273dd " name="loginForm" action="/tripster/login" method="post"
+              accept-charset="utf-8">
+            <h1>Login or Register</h1>
+            <div class="error"></div>
+            <div id="loginFlashMsg">
+                <p>  {{flashMsg}} </p>
+            </div>
+            <p>
+                <label for="login">Username or email</label>
+                <input id="ipbox1" type="email" name="username" placeholder="username@email.com"
+                       required ng-model="Email" class="ng-pristine ng-valid">
+            </p>
+
+            <p>
+                <label for="password">Password</label>
+                <input id="ipbox2" type="password" name="password" placeholder="password"
+                       required ng-model="Password" class="ng-pristine ng-valid">
+            </p>
+
+            <p>
+                <input type="submit" name="submit" value="Continue">
+            </p><br>
+
+            <p>
+                <span>Don't have an account?</span><br>
+                <a href="#create_new" style="color: #ffffff" ng-click="registernewUser()">Create new Account</a> <br>
+                <a href="#Forgot" style="color: #ffffff" ng-click="submitEmail()">Forgot your User Name or
+                    Password</a>
+            </p>
+        </form>
+        ​
+    </section>
+
+</div>
+<script type="text/javascript" src="/controllers/login.js"></script>
+</body>
+</html>

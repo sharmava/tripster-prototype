@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<div ng-app="planApp" ng-controller="planAppController">
+      <div id="planningLayout" >
+          <section>
+              <form class="form-4" name="loginForm"  method="post"
+                    accept-charset="utf-8" ng-submit="savePlanDetails()">
+                  <h1>Plan your trip</h1>
+
+                  <p>
+                      <label>Name</label>
+                      <input id="ipbox1" type="text" name="name" placeholder="Tripster"
+                             required class="ng-pristine ng-valid" ng-model="planDetails.Name">
+                  </p>
+
+                  <p>
+                      <label>Destination</label>
+                      <input id="ipbox2" type="text" name="destination" placeholder="Tripster"
+                             required class="ng-pristine ng-valid" ng-model="planDetails.Destination">
+                  </p>
+
+                  <p>
+                      <label>Description</label>
+                      <input id="ipbox3" type="text" name="description" placeholder="Tripster"
+                             required class="ng-pristine ng-valid" ng-model="planDetails.Description">
+                  </p>
+
+                  <p>
+                      <label>Invites</label>
+                      <input id="ipbox4" type="text" name="invites" placeholder="Tripster"
+                             required class="ng-pristine ng-valid" ng-model="planDetails.Invites">
+                  </p>
+
+                  <p>
+                      <label>Start Date</label>
+                      <input id="ipbox5" type="date" name="startDate"
+                             required class="ng-pristine ng-valid" ng-model="planDetails.StartDate">
+                  </p>
+
+                  <p>
+                      <label>End Date</label>
+                      <input id="ipbox6" type="date" name="endDate"
+                             required class="ng-pristine ng-valid" ng-model="planDetails.EndDate">
+                  </p>
+
+                  <p>
+                      <input type="submit" name="submit" value="Continue" ng-submit="tripEvents()">
+                  </p>
+
+                  <p>
+                      <button type="button" ng-click="tripEvents()">Click Me!</button>
+                  </p>
+
+
+              </form>
+          </section>
+
+      </div>
+</div>

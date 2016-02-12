@@ -1,0 +1,10 @@
+.planningHeader {
+    background: none repeat scroll 0 0 #ff865c;
+    color: #ffffff;
+    font-size: 16px;
+    text-align: center;
+}
+
+.table td {
+    text-align: center;
+}
